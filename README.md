@@ -1,1 +1,1 @@
-# Weekly-milestones
+# Repository for uploading the weekly milestones 
