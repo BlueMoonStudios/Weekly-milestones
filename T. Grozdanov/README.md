@@ -1,1 +1,1 @@
-# Theodor Grozdanov's folders for weekly milestones
+# Theodor Grozdanov's folder for weekly milestones
