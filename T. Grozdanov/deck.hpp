@@ -8,6 +8,8 @@ public:
 	//constructor
 	Deck();
 	Deck(int _numOfCardsTotal);
+	Deck(const Deck& other);
+	~Deck();
 	//accessors
 	int get_numOfCardsTotal() const;
 	int get_numOfCardsLeft() const;
@@ -15,12 +17,16 @@ public:
 	//mutator
 	void makeCardUnavailable(int index);
 	//method
-	void permuteDeck();
+	void permuteDeck(); 
 	int drawCard();
-	void deleteDeck();
+	//operator =
+	Deck& operator =(const Deck &other);
 private:
+	void copyDeck(const Deck &other);
+	int* deck;
 	int numOfCardsTotal;
 	int numOfCardsLeft;
 	int* permutation;
 	bool* cardsAvailable;
+	
 };

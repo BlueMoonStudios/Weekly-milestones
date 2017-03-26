@@ -5,6 +5,19 @@
 #include "cardWithEffect.hpp"
 #include "monsterCard.hpp"
 
+void Deck::copyDeck(const Deck& other)
+{
+	numOfCardsLeft = other.numOfCardsLeft;
+	numOfCardsTotal = other.numOfCardsTotal;
+	deck = new int[numOfCardsTotal];
+	permutation = new int[numOfCardsTotal];
+	cardsAvailable = new bool[numOfCardsTotal];
+	for (int i = 0; i < numOfCardsTotal; i++)
+	{
+		permutation[i] = other.permutation[i];
+		cardsAvailable[i] = other.cardsAvailable[i];
+	}
+}
 void swap(int permutation[], int i1, int i2)
 {
 	int temp;
@@ -26,6 +39,20 @@ Deck::Deck()
 	numOfCardsLeft = 10;
 	permutation = new int[10];
 	cardsAvailable = new bool[10];
+}
+Deck::Deck(const Deck& other)
+{
+	copyDeck(other);	
+}
+Deck& Deck::operator=(const Deck &other)
+{
+	if (this != &other)
+	{
+		delete[] permutation;
+		delete[] cardsAvailable;
+		copyDeck(other);
+	}
+	return *this;
 }
 //accessors
 int Deck::get_numOfCardsTotal() const
@@ -69,12 +96,12 @@ int Deck::drawCard()
 		if (cardsAvailable [permutation[i]])
 		{
 			makeCardUnavailable(permutation[i]);
-			return i;
+			return permutation[i];
 		}
 	}
 	return numOfCardsTotal; //no such card, error code
 }
-void Deck::deleteDeck()
+Deck::~Deck()
 {
 	delete[] permutation;
 	delete[] cardsAvailable;
