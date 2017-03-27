@@ -5,7 +5,7 @@ Battle::Battle()
 {
     turn_ = 1;
 }
-void Battle::switchTurn(Player activePlayer)//pred player?
+void Battle::switchTurn(Player activePlayer)
 {
     turn_ += 1;
 
