@@ -47,6 +47,7 @@ public:
 				vect[i] = v.vect[i];
 			else vect[i] = other.vect[i];
 		}
+		delete v;
 	}
 	~Vector()
 	{
@@ -118,6 +119,7 @@ private:
 		{
 			vect[i] = v.vect[i];
 		}
+		delete v;
 	}
 	T* vect;
 	int size;
