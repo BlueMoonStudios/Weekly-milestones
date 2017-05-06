@@ -83,10 +83,11 @@ Sstream& Sstream::operator << (String& _str)
 	return *this;
 }
 
-void Sstream::operator << (const char* _str)
+Sstream& Sstream::operator << (const char* _str)
 {
 	String str(_str);
 	Sstream::operator<<(str);
+	return *this;
 }
 
 Sstream& Sstream::operator >> (String& _str)

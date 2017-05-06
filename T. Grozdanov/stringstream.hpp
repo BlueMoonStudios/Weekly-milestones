@@ -21,7 +21,7 @@ public:
 	Sstream& operator << (int&);
 	Sstream& operator >> (int&);
 	Sstream& operator << (String&);
-	void operator << (const char*);
+	Sstream& operator << (const char*);
 	Sstream& operator >> (String&);
 	void strToInt(int&);
 	void intToStr(String&);	
