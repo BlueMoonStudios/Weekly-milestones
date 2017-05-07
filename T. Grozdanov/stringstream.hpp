@@ -17,6 +17,7 @@ public:
 	Sstream(String&);
 	Sstream(const char*);
 	Sstream(int&);
+	Sstream(int);
 	Sstream& operator =(const Sstream&);
 	Sstream& operator << (int&);
 	Sstream& operator >> (int&);

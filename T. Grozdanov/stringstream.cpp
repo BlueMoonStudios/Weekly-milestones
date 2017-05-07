@@ -29,13 +29,20 @@ Sstream::Sstream(String& _str) : numStrs(1), numInts(0), ints(nullptr)
 	strs[0] = _str;
 }
 
-Sstream::Sstream(const char* _str)
+Sstream::Sstream(const char* _str) : numStrs(1), numInts(0), ints(nullptr)
 {
 	String str(_str);
-	Sstream::Sstream(str);
+	strs = new String[1];
+	strs[0] = _str;
 }
 
 Sstream::Sstream(int& _int) : numStrs(0), numInts(1), strs(nullptr)
+{
+	ints = new int[1];
+	ints[0] = _int;
+}
+
+Sstream::Sstream(int _int) : numStrs(0), numInts(1), strs(nullptr)
 {
 	ints = new int[1];
 	ints[0] = _int;
@@ -63,6 +70,8 @@ Sstream& Sstream::operator << (int& num)
 	++numInts;
 	return *this;
 }
+
+
 
 Sstream& Sstream::operator >> (int& num)
 {
@@ -104,7 +113,7 @@ void Sstream::strToInt(int& _int)
 	int letters = strs[numStrs - 1].get_len();
 	for (int i = 0; i < letters; ++i)
 	{
-		_int += ((strs[numStrs - 1])[i] - '0')*pow(10, i);
+		_int += ((strs[numStrs - 1])[letters - i - 1] - '0')*pow(10, i);
 	}
 }
 
